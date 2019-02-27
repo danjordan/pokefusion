@@ -1,0 +1,26 @@
+{
+  "name": "pokefusion",
+  "description": "Fuse together two gen 1 pokemon",
+  "version": "1.0.0",
+  "author": "Dan Jordan",
+  "bin": {
+    "pokefusion": "index.js"
+  },
+  "bugs": {},
+  "dependencies": {
+    "node-fetch": "^2.3.0",
+    "ora": "^3.1.0",
+    "puppeteer": "^1.12.2",
+    "term-img": "^4.0.0"
+  },
+  "keywords": [
+    "cli",
+    "pokemon"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "repository": "https://github.com/danjordan/pokefusion",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
