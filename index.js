@@ -4,7 +4,7 @@ const ora = require("ora");
 const https = require("https");
 const fetch = require("node-fetch");
 const termImg = require("term-img");
-const puppeteer = require("puppeteer");
+const cheerio = require("cheerio");
 
 const agent = new https.Agent({
   rejectUnauthorized: false
@@ -17,18 +17,12 @@ const agent = new https.Agent({
 
   const spinner = ora("Fusing Pokémon...").start();
 
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto(url);
-
-  const pokemon = await page.evaluate(() => {
-    const name = document.querySelector(".title span").textContent;
-    const src = document.querySelector("#pk_img").src;
-
-    return { name, src };
-  });
-
-  await browser.close();
+  const html = await fetch(url).then(res => res.text());
+  const $ = cheerio.load(html);
+  const pokemon = {
+    name: $(".title span").text(),
+    src: $("#pk_img").attr("src"),
+  };
 
   const image = await fetch(pokemon.src, { agent });
   const buffer = await image.buffer();
