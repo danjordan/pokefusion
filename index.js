@@ -17,11 +17,11 @@ const agent = new https.Agent({
 
   const spinner = ora("Fusing Pokémon...").start();
 
-  const html = await fetch(url).then(res => res.text());
+  const html = await fetch(url, { agent }).then(res => res.text());
   const $ = cheerio.load(html);
   const pokemon = {
     name: $(".title span").text(),
-    src: $("#pk_img").attr("src"),
+    src: $("#pk_img").attr("src")
   };
 
   const image = await fetch(pokemon.src, { agent });
