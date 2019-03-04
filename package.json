@@ -1,7 +1,7 @@
 {
   "name": "pokefusion",
   "description": "Fuse together two gen 1 pokemon",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Dan Jordan",
   "bin": {
     "pokefusion": "index.js"
