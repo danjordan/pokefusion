@@ -20,7 +20,7 @@ const agent = new https.Agent({
   const html = await fetch(url, { agent }).then(res => res.text());
   const $ = cheerio.load(html);
   const pokemon = {
-    name: $(".title span").text(),
+    name: $("#pk_name").text(),
     src: $("#pk_img").attr("src")
   };
 
