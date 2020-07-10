@@ -7,7 +7,7 @@ const termImg = require("term-img");
 const cheerio = require("cheerio");
 
 const agent = new https.Agent({
-  rejectUnauthorized: false
+  rejectUnauthorized: false,
 });
 
 (async () => {
@@ -17,11 +17,12 @@ const agent = new https.Agent({
 
   const spinner = ora("Fusing Pokémon...").start();
 
-  const html = await fetch(url, { agent }).then(res => res.text());
+  const html = await fetch(url, { agent }).then((res) => res.text());
   const $ = cheerio.load(html);
+
   const pokemon = {
     name: $("#pk_name").text(),
-    src: $("#pk_img").attr("src")
+    src: $("#pk_img").attr("src"),
   };
 
   const image = await fetch(pokemon.src, { agent });
@@ -29,6 +30,6 @@ const agent = new https.Agent({
 
   spinner.stop();
 
-  console.log(await termImg.string(buffer));
+  console.log(await termImg(buffer));
   console.log(pokemon.name);
 })();
