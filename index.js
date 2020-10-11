@@ -4,12 +4,17 @@ const ora = require("ora");
 const fetch = require("node-fetch");
 const termImg = require("term-img");
 const cheerio = require("cheerio");
+const { findPokedexNumber } = require("./lookup");
 
 (async () => {
   try {
     const args = process.argv.slice(2);
+    const pokemon1 = findPokedexNumber(args[0]);
+    const pokemon2 = findPokedexNumber(args[1]);
 
-    const url = ["https://pokemon.alexonsager.net", ...args].join("/");
+    const url = ["https://pokemon.alexonsager.net", pokemon1, pokemon2].join(
+      "/"
+    );
 
     const spinner = ora("Fusing Pokémon...").start();
 
