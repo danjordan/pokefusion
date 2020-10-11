@@ -12,14 +12,6 @@ const { findPokedexNumber } = require("./lookup");
     const pokemon1 = findPokedexNumber(args[0]);
     const pokemon2 = findPokedexNumber(args[1]);
 
-    if (!pokemon1) {
-      throw new Error(`👀 Invalid pokemon: ${args[0]}`);
-    }
-
-    if (!pokemon2) {
-      throw new Error(`👀 Invalid pokemon: ${args[1]}`);
-    }
-
     const url = ["https://pokemon.alexonsager.net", pokemon1, pokemon2].join(
       "/"
     );

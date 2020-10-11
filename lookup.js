@@ -153,28 +153,19 @@ const POKEMONS = [
 ];
 
 /**
- * finds a valid pokedex number for the name given, or validates range for pokedex number
- * returns falsey/null when input invalid
+ * finds a pokedex number for the name given, or returns the input unchanged
  * @param {String|Number} pokemonInput
  */
-function findPokedexNumber(pokemonInput) {
-  if (!pokemonInput) {
-    return null;
-  }
-  if (/\d+/.test(pokemonInput)) {
-    if (pokemonInput > 151 || pokemonInput < 1) {
-      return null;
-    }
-    return pokemonInput;
-  }
-  const name = pokemonInput;
+function findPokedexNumber(pokemon = "") {
   const index = POKEMONS.findIndex(
-    (x) => x.name.toLowerCase() === name.trim().toLowerCase()
+    (x) => x.name.toLowerCase() === pokemon.trim().toLowerCase()
   );
-  if (index === -1) {
-    return null;
+
+  if (index >= 0) {
+    return index + 1;
   }
-  return index + 1;
+
+  return pokemon;
 }
 
 module.exports = {
