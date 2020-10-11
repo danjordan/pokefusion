@@ -2,7 +2,7 @@
 
 const ora = require("ora");
 const fetch = require("node-fetch");
-const termImg = require("term-img");
+const termImg = require("terminal-image");
 const cheerio = require("cheerio");
 
 (async () => {
@@ -26,7 +26,7 @@ const cheerio = require("cheerio");
 
     spinner.stop();
 
-    console.log(await termImg(buffer));
+    console.log(await termImg.buffer(buffer));
     console.log(pokemon.name);
   } catch (e) {
     console.log(`An error occurred. ${e.message}`);
