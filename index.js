@@ -2,7 +2,7 @@
 
 const ora = require("ora");
 const fetch = require("node-fetch");
-const termImg = require("terminal-image");
+const terminalImage = require("terminal-image");
 const cheerio = require("cheerio");
 
 (async () => {
@@ -26,9 +26,12 @@ const cheerio = require("cheerio");
 
     spinner.stop();
 
-    // use fixed width to prevent image from rendering at 100% width/centred
-    // Cap height = 20 to fit in default unix 80x24 terminal
-    console.log(await termImg.buffer(buffer, { width: 50, height: 20 }));
+    console.log(
+      await terminalImage.buffer(buffer, {
+        height: 12,
+        width: 44,
+      })
+    );
     console.log(pokemon.name);
   } catch (e) {
     console.log(`An error occurred. ${e.message}`);
