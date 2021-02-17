@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const ora = require("ora");
-const fetch = require("node-fetch");
-const terminalImage = require("terminal-image");
-const cheerio = require("cheerio");
+import ora from "ora";
+import cheerio from "cheerio";
+import fetch from "node-fetch";
+import terminalImage from "terminal-image";
 
 (async () => {
   try {
