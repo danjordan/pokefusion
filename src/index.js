@@ -21,13 +21,12 @@ import terminalImage from "terminal-image";
       src: $("#pk_img").attr("src"),
     };
 
-    const image = await fetch(pokemon.src);
-    const buffer = await image.buffer();
+    const image = await fetch(pokemon.src).then((res) => res.buffer());
 
     spinner.stop();
 
     console.log(
-      await terminalImage.buffer(buffer, {
+      await terminalImage.buffer(image, {
         height: 12,
         width: 44,
       })
